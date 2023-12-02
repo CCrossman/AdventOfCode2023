@@ -5,5 +5,3 @@ enum class Color {
 }
 
 data class Cube(val count: Int, val color: Color)
-
-data class CubeMax(val max: Int, val color: Color)
