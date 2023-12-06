@@ -8,10 +8,14 @@ object Utils {
     private val loader = ClassLoader.getSystemClassLoader()
 
     fun readLines(path: String): List<String> {
-        val reader = loader.getResourceAsStream(path)?.let { InputStreamReader(it) }?.let { BufferedReader(it) }
+        val reader = getReader(path)
         return reader.use { r ->
             r?.readLines() ?: listOf()
         }
+    }
+
+    fun getReader(path: String): BufferedReader? {
+        return loader.getResourceAsStream(path)?.let { InputStreamReader(it) }?.let { BufferedReader(it) }
     }
 
     fun readColumns(path: String, sep: Char): List<List<String>> {
